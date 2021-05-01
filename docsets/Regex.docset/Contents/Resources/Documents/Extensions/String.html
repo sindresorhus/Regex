@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>String Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Extension/String" class="dashAnchor"></a>
+
+    <a title="String Extension Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Regex Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/sindresorhus/Regex">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fsindresorhus.com%2FRegex%2Fdocsets%2FRegex.xml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Regex Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      String Extension Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Regex/Match.html">– Match</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>String</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span></code></pre>
+
+                </div>
+              </div>
+            
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS5RegexE19replacingFirstMatch2of4withSSA2AV_SStF"></a>
+                    <a name="//apple_ref/swift/Method/replacingFirstMatch(of:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5RegexE19replacingFirstMatch2of4withSSA2AV_SStF">replacingFirstMatch(of:<wbr>with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a new string where the first match is replaced with the template.</p>
+
+<p>You can use template variables like <code>$</code> and <code>$0</code> in the template. <a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1965591">More info.</a></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="s">"123🦄456"</span><span class="o">.</span><span class="nf">replacingFirstMatch</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">),</span> <span class="nv">with</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="c1">//=&gt; "🦄456"</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replacingFirstMatch</span><span class="p">(</span>
+	<span class="n">of</span> <span class="nv">regex</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html">Regex</a></span><span class="p">,</span>
+	<span class="n">with</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS5RegexE19replacingFirstMatch2of4withSSs12StaticStringV_SStF"></a>
+                    <a name="//apple_ref/swift/Method/replacingFirstMatch(of:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5RegexE19replacingFirstMatch2of4withSSs12StaticStringV_SStF">replacingFirstMatch(of:<wbr>with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a new string where the first match is replaced with the template.</p>
+
+<p>You can use template variables like <code>$</code> and <code>$0</code> in the template. <a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1965591">More info.</a></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="s">"123🦄456"</span><span class="o">.</span><span class="nf">replacingFirstMatch</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="c1">//=&gt; "🦄456"</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replacingFirstMatch</span><span class="p">(</span>
+	<span class="n">of</span> <span class="nv">regexPattern</span><span class="p">:</span> <span class="kt">StaticString</span><span class="p">,</span>
+	<span class="n">with</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS5RegexE19replacingAllMatches2of4with7optionsSSA2AV_SSSo17NSMatchingOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/replacingAllMatches(of:with:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5RegexE19replacingAllMatches2of4with7optionsSSA2AV_SSSo17NSMatchingOptionsVtF">replacingAllMatches(of:<wbr>with:<wbr>options:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a new string where all matches are replaced with the template.</p>
+
+<p>You can use template variables like <code>$</code> and <code>$0</code> in the template. <a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1965591">More info.</a></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="s">"123🦄456"</span><span class="o">.</span><span class="nf">replacingAllMatches</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">),</span> <span class="nv">with</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="c1">//=&gt; "🦄"</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replacingAllMatches</span><span class="p">(</span>
+	<span class="n">of</span> <span class="nv">regex</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html">Regex</a></span><span class="p">,</span>
+	<span class="n">with</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+	<span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html">Regex</a></span><span class="o">.</span><span class="kt">MatchingOptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS5RegexE19replacingAllMatches2of4with7optionsSSs12StaticStringV_SSSo17NSMatchingOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/replacingAllMatches(of:with:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS5RegexE19replacingAllMatches2of4with7optionsSSs12StaticStringV_SSSo17NSMatchingOptionsVtF">replacingAllMatches(of:<wbr>with:<wbr>options:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a new string where all matches are replaced with the template.</p>
+
+<p>You can use template variables like <code>$</code> and <code>$0</code> in the template. <a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1965591">More info.</a></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="s">"123🦄456"</span><span class="o">.</span><span class="nf">replacingAllMatches</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="c1">//=&gt; "🦄"</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replacingAllMatches</span><span class="p">(</span>
+	<span class="n">of</span> <span class="nv">regexPattern</span><span class="p">:</span> <span class="kt">StaticString</span><span class="p">,</span>
+	<span class="n">with</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+	<span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html">Regex</a></span><span class="o">.</span><span class="kt">MatchingOptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>MIT License © <a class="link" href="https://sindresorhus.com" target="_blank" rel="external">Sindre Sorhus</a></p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

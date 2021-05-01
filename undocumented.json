@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/sindresorhus/dev/oss/Regex/Sources/Regex/Regex.swift",
+      "line": 138,
+      "symbol": "Regex.Options",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/sindresorhus/dev/oss/Regex/Sources/Regex/Regex.swift",
+      "line": 139,
+      "symbol": "Regex.MatchingOptions",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/sindresorhus/dev/oss/Regex"
+}

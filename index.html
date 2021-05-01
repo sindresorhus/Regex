@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Regex  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Regex  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Regex Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/sindresorhus/Regex">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fsindresorhus.com%2FRegex%2Fdocsets%2FRegex.xml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Regex Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Regex  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Regex/Match.html">– Match</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='regex' class='heading'>Regex</h1>
+
+<blockquote>
+<p>Swifty <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a></p>
+</blockquote>
+
+<p>This is a wrapper for <a href="https://developer.apple.com/documentation/foundation/nsregularexpression"><code>NSRegularExpression</code></a> that makes it more convenient and type-safe to use regular expressions in Swift.</p>
+<h2 id='install' class='heading'>Install</h2>
+
+<p>Add the following to <code>Package.swift</code>:</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/sindresorhus/Regex"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.0.0"</span><span class="p">)</span>
+</code></pre>
+
+<p><a href="https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app">Or add the package in Xcode.</a></p>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>First, import the package:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+</code></pre>
+
+<p><a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1661061">Supported regex syntax.</a></p>
+<h3 id='examples' class='heading'>Examples</h3>
+
+<p>Check if it matches:</p>
+<pre class="highlight swift"><code><span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">)</span><span class="o">.</span><span class="nf">isMatched</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="s">"123"</span><span class="p">)</span>
+<span class="c1">//=&gt; true</span>
+</code></pre>
+
+<p>Get first match:</p>
+<pre class="highlight swift"><code><span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">)</span><span class="o">.</span><span class="nf">firstMatch</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"123-456"</span><span class="p">)?</span><span class="o">.</span><span class="n">value</span>
+<span class="c1">//=&gt; "123"</span>
+</code></pre>
+
+<p>Get all matches:</p>
+<pre class="highlight swift"><code><span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">)</span><span class="o">.</span><span class="nf">allMatches</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"123-456"</span><span class="p">)</span><span class="o">.</span><span class="nf">map</span><span class="p">(\</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="c1">//=&gt; ["123", "456"]</span>
+</code></pre>
+
+<p>Replacing first match:</p>
+<pre class="highlight swift"><code><span class="s">"123🦄456"</span><span class="o">.</span><span class="nf">replacingFirstMatch</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="c1">//=&gt; "🦄456"</span>
+</code></pre>
+
+<p>Replacing all matches:</p>
+<pre class="highlight swift"><code><span class="s">"123🦄456"</span><span class="o">.</span><span class="nf">replacingAllMatches</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+<span class="c1">//=&gt; "🦄"</span>
+</code></pre>
+
+<p>Named capture groups:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">regex</span> <span class="o">=</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+(?&lt;word&gt;[a-z]+)</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">)</span>
+
+<span class="n">regex</span><span class="o">.</span><span class="nf">firstMatch</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"123unicorn456"</span><span class="p">)?</span><span class="o">.</span><span class="nf">group</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"word"</span><span class="p">)?</span><span class="o">.</span><span class="n">value</span>
+<span class="c1">//=&gt; "unicorn"</span>
+</code></pre>
+
+<p><a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html">Pattern matching:</a></p>
+<pre class="highlight swift"><code><span class="k">switch</span> <span class="s">"foo123"</span> <span class="p">{</span>
+<span class="k">case</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"^foo</span><span class="err">\</span><span class="s">d+$"</span><span class="err">#</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Match!"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="k">break</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='api' class='heading'>API</h2>
+
+<p><a href="https://sindresorhus.com/Regex/Structs/Regex.html">See the API docs.</a></p>
+<h2 id='related' class='heading'>Related</h2>
+
+<ul>
+<li><a href="https://github.com/sindresorhus/Defaults">Defaults</a> - Swifty and modern UserDefaults</li>
+<li><a href="https://github.com/sindresorhus/KeyboardShortcuts">KeyboardShortcuts</a> - Add user-customizable global keyboard shortcuts to your macOS app</li>
+<li><a href="https://github.com/sindresorhus/LaunchAtLogin">LaunchAtLogin</a> - Add “Launch at Login” functionality to your macOS app</li>
+<li><a href="https://github.com/search?q=user%3Asindresorhus+language%3Aswift">More…</a></li>
+</ul>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>MIT License © <a class="link" href="https://sindresorhus.com" target="_blank" rel="external">Sindre Sorhus</a></p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

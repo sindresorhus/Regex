@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Regex Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/Regex" class="dashAnchor"></a>
+
+    <a title="Regex Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Regex Docs
+        </a>
+        
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/sindresorhus/Regex">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fsindresorhus.com%2FRegex%2Fdocsets%2FRegex.xml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Regex Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Regex Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Regex/Match.html">– Match</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Regex</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Regex</span> <span class="p">:</span> <span class="kt">Hashable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Create a regular expression from a pattern string and options.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="k">let</span> <span class="nv">regex</span> <span class="o">=</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"^[a-z]+$"</span><span class="err">#</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="o">.</span><span class="n">caseInsensitive</span><span class="p">)</span>
+
+<span class="n">regex</span><span class="o">.</span><span class="nf">isMatched</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="s">"Unicorn"</span><span class="p">)</span>
+<span class="c1">//=&gt; true</span>
+</code></pre>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><p>Initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV_7options4file4lineABs12StaticStringV_So26NSRegularExpressionOptionsVAGSitcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:options:file:line:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV_7options4file4lineABs12StaticStringV_So26NSRegularExpressionOptionsVAGSitcfc">init(_:<wbr>options:<wbr>file:<wbr>line:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>Regex</code> from a static pattern string and options.</p>
+
+<p>Tip: Wrap the pattern string in <code>#</code> to reduce the need for escaping. For example: <code>#&quot;\d+&quot;#</code>.</p>
+
+<p><a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1661061">Supported regex syntax.</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+	<span class="n">_</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">StaticString</span><span class="p">,</span>
+	<span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html#/s:5RegexAAV7Optionsa">Options</a></span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="nv">file</span><span class="p">:</span> <span class="kt">StaticString</span> <span class="o">=</span> <span class="kd">#file</span><span class="kt">ID</span><span class="p">,</span>
+	<span class="nv">line</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kd">#line</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV_7optionsABSS_So26NSRegularExpressionOptionsVtKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV_7optionsABSS_So26NSRegularExpressionOptionsVtKcfc">init(_:<wbr>options:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>Regex</code> from a pattern string and options.</p>
+
+<p>Tip: Wrap the pattern string in <code>#</code> to reduce the need for escaping. For example: <code>#&quot;\d+&quot;#</code>.</p>
+
+<p><a href="https://developer.apple.com/documentation/foundation/nsregularexpression#1661061">Supported regex syntax.</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@_disfavoredOverload</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+	<span class="n">_</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+	<span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html#/s:5RegexAAV7Optionsa">Options</a></span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAVyABSo19NSRegularExpressionCcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAVyABSo19NSRegularExpressionCcfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>Regex</code> from a <code>NSRegularExpression</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@_disfavoredOverload</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">regularExpression</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Methods"></a>
+                  <h3 class="section-name"><p>Methods</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV9isMatched2bySbSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/isMatched(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV9isMatched2bySbSS_tF">isMatched(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns whether there is a match in the given string.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"^</span><span class="err">\</span><span class="s">d+$"</span><span class="err">#</span><span class="p">)</span><span class="o">.</span><span class="nf">isMatched</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="s">"123"</span><span class="p">)</span>
+<span class="c1">//=&gt; true</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isMatched</span><span class="p">(</span><span class="n">by</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV10firstMatch2inAB0C0VSgSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/firstMatch(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV10firstMatch2inAB0C0VSgSS_tF">firstMatch(in:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the first match in the given string.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">)</span><span class="o">.</span><span class="nf">firstMatch</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"123-456"</span><span class="p">)?</span><span class="o">.</span><span class="n">value</span>
+<span class="c1">//=&gt; "123"</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">firstMatch</span><span class="p">(</span><span class="k">in</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Regex/Match.html">Match</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV10allMatches2inSayAB5MatchVGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/allMatches(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV10allMatches2inSayAB5MatchVGSS_tF">allMatches(in:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns all the matches in the given string.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"</span><span class="err">\</span><span class="s">d+"</span><span class="err">#</span><span class="p">)</span><span class="o">.</span><span class="nf">allMatches</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"123-456"</span><span class="p">)</span><span class="o">.</span><span class="nf">map</span><span class="p">(\</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="c1">//=&gt; ["123", "456"]</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">allMatches</span><span class="p">(</span><span class="k">in</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/Regex/Match.html">Match</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Properties"></a>
+                  <h3 class="section-name"><p>Properties</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV7patternSSvp"></a>
+                    <a name="//apple_ref/swift/Property/pattern" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV7patternSSvp">pattern</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The regular expression pattern.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV7optionsSo26NSRegularExpressionOptionsVvp"></a>
+                    <a name="//apple_ref/swift/Property/options" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV7optionsSo26NSRegularExpressionOptionsVvp">options</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The regular expression options.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Regex.html#/s:5RegexAAV7Optionsa">Options</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Types"></a>
+                <a name="//apple_ref/swift/Section/Types" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Types"></a>
+                  <h3 class="section-name"><p>Types</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV7Optionsa"></a>
+                    <a name="//apple_ref/swift/Alias/Options" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV7Optionsa">Options</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Options</span> <span class="o">=</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV15MatchingOptionsa"></a>
+                    <a name="//apple_ref/swift/Alias/MatchingOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV15MatchingOptionsa">MatchingOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">MatchingOptions</span> <span class="o">=</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">MatchingOptions</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV5MatchV"></a>
+                    <a name="//apple_ref/swift/Struct/Match" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV5MatchV">Match</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A regex match.</p>
+
+                        <a href="../Structs/Regex/Match.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Match</span> <span class="p">:</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Operators"></a>
+                <a name="//apple_ref/swift/Section/Operators" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Operators"></a>
+                  <h3 class="section-name"><p>Operators</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV2teoiySbSS_ABtFZ"></a>
+                    <a name="//apple_ref/swift/Method/~=(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV2teoiySbSS_ABtFZ">~=(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enables using a regex for pattern matching.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="k">switch</span> <span class="s">"foo123"</span> <span class="p">{</span>
+<span class="k">case</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"^foo</span><span class="err">\</span><span class="s">d+$"</span><span class="err">#</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Match!"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="k">break</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">~=</span> <span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">regex</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV2teoiySbAB_SStFZ"></a>
+                    <a name="//apple_ref/swift/Method/~=(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV2teoiySbAB_SStFZ">~=(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enables using a regex for pattern matching.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Regex</span>
+
+<span class="k">switch</span> <span class="kt">Regex</span><span class="p">(</span><span class="err">#</span><span class="s">"^foo</span><span class="err">\</span><span class="s">d+$"</span><span class="err">#</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s">"foo123"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Match!"</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="k">break</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">~=</span> <span class="p">(</span><span class="nv">regex</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`,</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Helpers"></a>
+                <a name="//apple_ref/swift/Section/Helpers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Helpers"></a>
+                  <h3 class="section-name"><p>Helpers</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5RegexAAV15escapingPattern3forS2S_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/escapingPattern(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5RegexAAV15escapingPattern3forS2S_tFZ">escapingPattern(for:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a string by adding backslash escapes as necessary to protect any characters that would match as pattern metacharacters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">escapingPattern</span><span class="p">(</span><span class="k">for</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>MIT License © <a class="link" href="https://sindresorhus.com" target="_blank" rel="external">Sindre Sorhus</a></p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

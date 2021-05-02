@@ -88,6 +88,23 @@ default:
 }
 ```
 
+Multiline and comments:
+
+```swift
+let regex = Regex(
+	#"""
+	^
+	[a-z]+  # Match the word
+	\d+     # Match the number
+	$
+	"""#,
+	options: .allowCommentsAndWhitespace
+)
+
+regex.isMatched(by: "foo123")
+//=> true
+```
+
 ## API
 
 [See the API docs.](https://sindresorhus.com/Regex/Structs/Regex.html)

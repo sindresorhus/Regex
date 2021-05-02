@@ -76,4 +76,18 @@ final class RegexTests: XCTestCase {
 		XCTAssertTrue(Regex(#"^foo\d+$"#) ~= "foo123")
 		XCTAssertTrue("foo123" ~= Regex(#"^foo\d+$"#))
 	}
+
+	func testMultilineOption() {
+		let regex = Regex(
+			#"""
+			^
+			[a-z]+  # Match the word
+			\d+     # Match the number
+			$
+			"""#,
+			options: .allowCommentsAndWhitespace
+		)
+
+		XCTAssertTrue(regex.isMatched(by: "foo123"))
+	}
 }

@@ -210,13 +210,11 @@ extension Regex {
 			// TODO: Fix `Group` too.
 			// TODO: Add more tests.
 
-			let nsString = string as NSString
-			let nsRange = nsString.rangeOfComposedCharacterSequences(for: checkingResult.range)
-			self.value = nsString.substring(with: nsRange)
-
+			let nsRange = checkingResult.range
 			let startIndex = string.utf16.index(string.utf16.startIndex, offsetBy: nsRange.lowerBound)
 			let endIndex = string.utf16.index(startIndex, offsetBy: nsRange.length)
-			self.range = startIndex..<endIndex
+			self.range = string.rangeOfComposedCharacterSequences(for: startIndex..<endIndex)
+			self.value = String(string[self.range])
 
 			// The first range is the full range, so we ignore that.
 			self.groups = (1..<checkingResult.numberOfRanges).compactMap {

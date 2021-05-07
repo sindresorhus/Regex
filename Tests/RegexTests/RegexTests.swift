@@ -90,4 +90,71 @@ final class RegexTests: XCTestCase {
 
 		XCTAssertTrue(regex.isMatched(by: "foo123"))
 	}
+
+	func testUnicode() {
+		/*
+		UTF16 representation:
+		0d2b MALAYALAM LETTER PHA (U+0D2B)
+		0d46 MALAYALAM VOWEL SIGN E (U+0D46)
+		0d2f MALAYALAM LETTER YA (U+0D2F)
+		0d4d MALAYALAM SIGN VIRAMA (U+0D4D)
+		200c ZERO WIDTH NON-JOINER (U+200C)
+		*/
+		let fixture = "ഫെയ്‌"
+
+		/*
+		UTF16 representation:
+		0d2b MALAYALAM LETTER PHA (U+0D2B)
+		0d46 MALAYALAM VOWEL SIGN E (U+0D46)
+		0d2f MALAYALAM LETTER YA (U+0D2F)
+		0d4d MALAYALAM SIGN VIRAMA (U+0D4D)
+		*/
+		let expected = "ഫെയ്"
+
+		let match = Regex(#"\p{malayalam}+"#).firstMatch(in: fixture)!
+
+		XCTAssertEqual(
+			match.value,
+			expected
+		)
+
+		XCTAssertEqual(
+			String(fixture[match.range]),
+			match.value
+		)
+	}
+
+	func testUnicode2() {
+		let fixture = "foo ഫെയ്‌ bar"
+
+		// The `fixture` without `ZERO WIDTH NON-JOINER`.
+		let expected = "ഫെയ്"
+
+		let match = Regex(#"\p{malayalam}+"#).firstMatch(in: fixture)!
+
+		XCTAssertEqual(
+			match.value,
+			expected
+		)
+
+		XCTAssertEqual(
+			String(fixture[match.range]),
+			match.value
+		)
+	}
+
+	func testUnicode3() {
+		let fixture = "foo ഫെയ്‌ bar"
+		let match = Regex(#"\p{malayalam}"#).firstMatch(in: fixture)!
+
+		XCTAssertEqual(
+			match.value,
+			"ഫെ"
+		)
+
+		XCTAssertEqual(
+			String(fixture[match.range]),
+			match.value
+		)
+	}
 }

@@ -157,8 +157,8 @@ extension Regex {
 			public let range: Range<String.Index>
 
 			fileprivate init(originalString: String, range: NSRange) {
+				self.value = (originalString as NSString).substring(with: range)
 				self.range = Range(range, in: originalString)!
-				self.value = String(originalString[self.range])
 			}
 		}
 
@@ -193,7 +193,10 @@ extension Regex {
 		public func group(named name: String) -> Group? {
 			let range = checkingResult.range(withName: name)
 
-			guard range.length > 0 else {
+			guard
+				range.location != NSNotFound,
+				range.length > 0
+			else {
 				return nil
 			}
 
@@ -203,12 +206,26 @@ extension Regex {
 		fileprivate init(checkingResult: NSTextCheckingResult, string: String) {
 			self.checkingResult = checkingResult
 			self.originalString = string
-			self.value = string[nsRange: checkingResult.range]!.string
-			self.range = Range(checkingResult.range, in: string)!
+
+			// TODO: Fix `Group` too.
+			// TODO: Add more tests.
+
+			let nsString = string as NSString
+			let nsRange = nsString.rangeOfComposedCharacterSequences(for: checkingResult.range)
+			self.value = nsString.substring(with: nsRange)
+
+			let startIndex = string.utf16.index(string.utf16.startIndex, offsetBy: nsRange.lowerBound)
+			let endIndex = string.utf16.index(startIndex, offsetBy: nsRange.length)
+			self.range = startIndex..<endIndex
 
 			// The first range is the full range, so we ignore that.
-			self.groups = (1..<checkingResult.numberOfRanges).map {
+			self.groups = (1..<checkingResult.numberOfRanges).compactMap {
 				let range = checkingResult.range(at: $0)
+
+				guard range.location != NSNotFound else {
+					return nil
+				}
+
 				return Group(originalString: string, range: range)
 			}
 		}

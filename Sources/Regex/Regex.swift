@@ -157,7 +157,7 @@ extension Regex {
 			public let range: Range<String.Index>
 
 			fileprivate init(originalString: String, range: NSRange) {
-				self.range = Range(range, in: originalString)!
+				self.range = originalString.range(fromNSRange: range)
 				self.value = String(originalString[self.range])
 			}
 		}
@@ -193,7 +193,10 @@ extension Regex {
 		public func group(named name: String) -> Group? {
 			let range = checkingResult.range(withName: name)
 
-			guard range.length > 0 else {
+			guard
+				range.location != NSNotFound,
+				range.length > 0
+			else {
 				return nil
 			}
 
@@ -203,12 +206,20 @@ extension Regex {
 		fileprivate init(checkingResult: NSTextCheckingResult, string: String) {
 			self.checkingResult = checkingResult
 			self.originalString = string
-			self.value = string[nsRange: checkingResult.range]!.string
-			self.range = Range(checkingResult.range, in: string)!
+			self.range = string.range(fromNSRange: checkingResult.range)
+			self.value = String(string[self.range])
 
 			// The first range is the full range, so we ignore that.
-			self.groups = (1..<checkingResult.numberOfRanges).map {
+			self.groups = (1..<checkingResult.numberOfRanges).compactMap {
 				let range = checkingResult.range(at: $0)
+
+				guard
+					range.location != NSNotFound,
+					range.length > 0
+				else {
+					return nil
+				}
+
 				return Group(originalString: string, range: range)
 			}
 		}

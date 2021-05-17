@@ -157,8 +157,8 @@ extension Regex {
 			public let range: Range<String.Index>
 
 			fileprivate init(originalString: String, range: NSRange) {
-				self.value = (originalString as NSString).substring(with: range)
-				self.range = Range(range, in: originalString)!
+				self.range = originalString.range(fromNSRange: range)
+				self.value = String(originalString[self.range])
 			}
 		}
 
@@ -206,21 +206,17 @@ extension Regex {
 		fileprivate init(checkingResult: NSTextCheckingResult, string: String) {
 			self.checkingResult = checkingResult
 			self.originalString = string
-
-			// TODO: Fix `Group` too.
-			// TODO: Add more tests.
-
-			let nsRange = checkingResult.range
-			let startIndex = string.utf16.index(string.utf16.startIndex, offsetBy: nsRange.lowerBound)
-			let endIndex = string.utf16.index(startIndex, offsetBy: nsRange.length)
-			self.range = string.rangeOfComposedCharacterSequences(for: startIndex..<endIndex)
+			self.range = string.range(fromNSRange: checkingResult.range)
 			self.value = String(string[self.range])
 
 			// The first range is the full range, so we ignore that.
 			self.groups = (1..<checkingResult.numberOfRanges).compactMap {
 				let range = checkingResult.range(at: $0)
 
-				guard range.location != NSNotFound else {
+				guard
+					range.location != NSNotFound,
+					range.length > 0
+				else {
 					return nil
 				}
 

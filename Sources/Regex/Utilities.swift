@@ -25,6 +25,20 @@ extension String {
 }
 
 
+extension String {
+	/**
+	Get a `String` range from a `NSRange`.
+
+	This works better than the built-in `Range(nsRange, in: string)`.
+	*/
+	func range(fromNSRange nsRange: NSRange) -> Range<String.Index> {
+		let startIndex = utf16.index(utf16.startIndex, offsetBy: nsRange.lowerBound)
+		let endIndex = utf16.index(startIndex, offsetBy: nsRange.length)
+		return rangeOfComposedCharacterSequences(for: startIndex..<endIndex)
+	}
+}
+
+
 /// Convenience wrappers that make the `range` parameter optional and type-safe.
 extension NSRegularExpression {
 	/// Returns an array containing all the matches of the regular expression in the string.

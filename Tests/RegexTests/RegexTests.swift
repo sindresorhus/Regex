@@ -58,17 +58,46 @@ final class RegexTests: XCTestCase {
 	}
 
 	func testMatchGroupRange() {
-		let string = "foo-456"
-		let groups = Regex(#"([a-z]+)-(\d+)"#).firstMatch(in: string)!.groups
+		let fixture = "foo-456"
+		let groups = Regex(#"([a-z]+)-(\d+)"#).firstMatch(in: fixture)!.groups
 
 		XCTAssertEqual(
-			string[groups[0].range],
+			fixture[groups[0].range],
 			"foo"
 		)
 
 		XCTAssertEqual(
-			string[groups[1].range],
+			fixture[groups[1].range],
 			"456"
+		)
+
+		XCTAssertEqual(
+			String(fixture[groups[0].range]),
+			groups[0].value
+		)
+
+		XCTAssertEqual(
+			String(fixture[groups[1].range]),
+			groups[1].value
+		)
+	}
+
+	func testMatchGroupUnicode() {
+		let fixture = "foo ഫെയ്‌ bar"
+
+		// The `fixture` without `ZERO WIDTH NON-JOINER`.
+		let expected = "ഫെയ്"
+
+		let groups = Regex(#"foo (\p{malayalam}+)"#).firstMatch(in: fixture)!.groups
+
+		XCTAssertEqual(
+			groups[0].value,
+			expected
+		)
+
+		XCTAssertEqual(
+			String(fixture[groups[0].range]),
+			groups[0].value
 		)
 	}
 
@@ -150,6 +179,22 @@ final class RegexTests: XCTestCase {
 		XCTAssertEqual(
 			match.value,
 			"ഫെ"
+		)
+
+		XCTAssertEqual(
+			String(fixture[match.range]),
+			match.value
+		)
+	}
+
+	func testUnicode4() {
+		let fixture = "foo 👩‍👩‍👧‍👦​🇳🇴 bar"
+		let expected = "👩‍👩‍👧‍👦​🇳🇴"
+		let match = Regex(#"[^foo ]+"#).firstMatch(in: fixture)!
+
+		XCTAssertEqual(
+			match.value,
+			expected
 		)
 
 		XCTAssertEqual(

@@ -27,11 +27,11 @@ extension String {
 
 extension String {
 	/**
-	Get a `String` range from a `NSRange`.
+	Get a string range from a `NSRange`.
 
-	This works better than the built-in `Range(nsRange, in: string)`.
+	This works better than the built-in `Range(nsRange, in: string)`, which doesn't correctly handle some Unicode compositions.
 	*/
-	func range(fromNSRange nsRange: NSRange) -> Range<String.Index> {
+	func range(fromNSRange nsRange: NSRange) -> Range<Index> {
 		let startIndex = utf16.index(utf16.startIndex, offsetBy: nsRange.lowerBound)
 		let endIndex = utf16.index(startIndex, offsetBy: nsRange.length)
 		return rangeOfComposedCharacterSequences(for: startIndex..<endIndex)

@@ -1,42 +1,43 @@
-import XCTest
-@testable import Regex
+ XCTest
+ Regex
 
-final class RegexTests: XCTestCase {
-	func testInit() throws {
+ RegexTests: XCTestCase {
+	 testInit() throws {
 		_ = Regex(#"\d+"#)
 
-		let regex = #"\d+"#
-		_ = try Regex(regex)
+		 regex = #"\d+"#
+		_ = Regex(regex)
 	}
 
-	func testEquality() {
+	testEquality() {
 		XCTAssertEqual(Regex(#"\d+"#), Regex(#"\d+"#))
 		XCTAssertEqual(Regex(#"\d+"#, options: .caseInsensitive), Regex(#"\d+"#, options: .caseInsensitive))
 		XCTAssertNotEqual(Regex(#"\d+"#, options: .caseInsensitive), Regex(#"\d+"#))
 	}
 
-	func testIsMatched() {
+        testIsMatched() {
 		XCTAssertTrue(Regex(#"^\d+$"#).isMatched(by: "123"))
 		XCTAssertFalse(Regex(#"^\d+$"#).isMatched(by: "foo"))
 	}
 
-	func testFirstMatch() {
+
+        testFirstMatch() {
 		XCTAssertEqual(
 			Regex(#"\d+"#).firstMatch(in: "123-456")?.value,
 			"123"
 		)
 	}
 
-	func testAllMatches() {
+        testAllMatches() {
 		XCTAssertEqual(
 			Regex(#"\d+"#).allMatches(in: "123-456").map(\.value),
 			["123", "456"]
 		)
 	}
 
-	func testMatchRange() {
-		let string = "foo-456"
-		let match = Regex(#"\d+"#).firstMatch(in: string)!
+        testMatchRange() {
+	 string = "foo-456"
+         match = Regex(#"\d+"#).firstMatch(in: string)!
 
 		XCTAssertEqual(
 			String(string[match.range]),
@@ -45,7 +46,7 @@ final class RegexTests: XCTestCase {
 	}
 
 
-	func testMatchGroup() {
+         testMatchGroup() {
 		XCTAssertEqual(
 			Regex(#"(foo)(bar)"#).firstMatch(in: "-foobar-")?.groups.map(\.value),
 			["foo", "bar"]
@@ -57,9 +58,9 @@ final class RegexTests: XCTestCase {
 		)
 	}
 
-	func testMatchGroupRange() {
-		let fixture = "foo-456"
-		let groups = Regex(#"([a-z]+)-(\d+)"#).firstMatch(in: fixture)!.groups
+	 testMatchGroupRange() {
+		 fixture = "foo-456"
+		 groups = Regex(#"([a-z]+)-(\d+)"#).firstMatch(in: fixture)!.groups
 
 		XCTAssertEqual(
 			fixture[groups[0].range],
@@ -82,13 +83,13 @@ final class RegexTests: XCTestCase {
 		)
 	}
 
-	func testMatchGroupUnicode() {
-		let fixture = "foo ഫെയ്‌ bar"
+        testMatchGroupUnicode() {
+	       fixture = "foo ഫെയ്‌ bar"
 
 		// The `fixture` without `ZERO WIDTH NON-JOINER`.
-		let expected = "ഫെയ്"
+		 expected = "ഫെയ്"
 
-		let groups = Regex(#"foo (\p{malayalam}+)"#).firstMatch(in: fixture)!.groups
+		 groups = Regex(#"foo (\p{malayalam}+)"#).firstMatch(in: fixture)!.groups
 
 		XCTAssertEqual(
 			groups[0].value,
@@ -101,13 +102,13 @@ final class RegexTests: XCTestCase {
 		)
 	}
 
-	func testPatternMatching() {
+	 testPatternMatching() {
 		XCTAssertTrue(Regex(#"^foo\d+$"#) ~= "foo123")
 		XCTAssertTrue("foo123" ~= Regex(#"^foo\d+$"#))
 	}
 
-	func testMultilineOption() {
-		let regex = Regex(
+	 testMultilineOption() {
+		 regex = Regex(
 			#"""
 			^
 			[a-z]+  # Match the word
@@ -120,7 +121,7 @@ final class RegexTests: XCTestCase {
 		XCTAssertTrue(regex.isMatched(by: "foo123"))
 	}
 
-	func testUnicode() {
+	 testUnicode() {
 		/*
 		UTF16 representation:
 		0d2b MALAYALAM LETTER PHA (U+0D2B)
@@ -129,7 +130,7 @@ final class RegexTests: XCTestCase {
 		0d4d MALAYALAM SIGN VIRAMA (U+0D4D)
 		200c ZERO WIDTH NON-JOINER (U+200C)
 		*/
-		let fixture = "ഫെയ്‌"
+		 fixture = "ഫെയ്‌"
 
 		/*
 		UTF16 representation:
@@ -138,9 +139,9 @@ final class RegexTests: XCTestCase {
 		0d2f MALAYALAM LETTER YA (U+0D2F)
 		0d4d MALAYALAM SIGN VIRAMA (U+0D4D)
 		*/
-		let expected = "ഫെയ്"
+		 expected = "ഫെയ്"
 
-		let match = Regex(#"\p{malayalam}+"#).firstMatch(in: fixture)!
+		 match = Regex(#"\p{malayalam}+"#).firstMatch(in: fixture)!
 
 		XCTAssertEqual(
 			match.value,
@@ -153,13 +154,13 @@ final class RegexTests: XCTestCase {
 		)
 	}
 
-	func testUnicode2() {
-		let fixture = "foo ഫെയ്‌ bar"
+	 testUnicode2() {
+		 fixture = "foo ഫെയ്‌ bar"
 
 		// The `fixture` without `ZERO WIDTH NON-JOINER`.
-		let expected = "ഫെയ്"
+		 expected = "ഫെയ്"
 
-		let match = Regex(#"\p{malayalam}+"#).firstMatch(in: fixture)!
+		 match = Regex(#"\p{malayalam}+"#).firstMatch(in: fixture)!
 
 		XCTAssertEqual(
 			match.value,
@@ -172,9 +173,9 @@ final class RegexTests: XCTestCase {
 		)
 	}
 
-	func testUnicode3() {
-		let fixture = "foo ഫെയ്‌ bar"
-		let match = Regex(#"\p{malayalam}"#).firstMatch(in: fixture)!
+	 testUnicode3() {
+	    fixture = "foo ഫെയ്‌ bar
+            match = Regex(#"\p{malayalam}"#).firstMatch(in: fixture)!
 
 		XCTAssertEqual(
 			match.value,
@@ -187,10 +188,10 @@ final class RegexTests: XCTestCase {
 		)
 	}
 
-	func testUnicode4() {
-		let fixture = "foo 👩‍👩‍👧‍👦​🇳🇴 bar"
-		let expected = "👩‍👩‍👧‍👦​🇳🇴"
-		let match = Regex(#"[^foo ]+"#).firstMatch(in: fixture)!
+	 testUnicode4() {
+		 fixture = "foo 👩‍👩‍👧‍👦​🇳🇴 bar"
+	         expected = "👩‍👩‍👧‍👦​🇳🇴"
+		 match = Regex(#"[^foo ]+"#).firstMatch(in: fixture)!
 
 		XCTAssertEqual(
 			match.value,

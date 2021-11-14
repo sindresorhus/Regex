@@ -31,7 +31,7 @@ public struct Regex: Hashable {
 		line: Int = #line
 	) {
 		do {
-			try self.init(pattern.string, options: options)
+			try self.init(pattern.toString, options: options)
 		} catch {
 			fatalError("Invalid regular expression: \(error.localizedDescription)", file: file, line: UInt(line))
 		}
@@ -157,7 +157,7 @@ extension Regex {
 			public let range: Range<String.Index>
 
 			fileprivate init(originalString: String, range: NSRange) {
-				self.range = originalString.range(fromNSRange: range)
+				self.range = originalString.rangeBetter(from: range)
 				self.value = String(originalString[self.range])
 			}
 		}
@@ -194,7 +194,7 @@ extension Regex {
 			let range = checkingResult.range(withName: name)
 
 			guard
-				range.location != NSNotFound,
+				!range.isNotFound,
 				range.length > 0
 			else {
 				return nil
@@ -206,7 +206,7 @@ extension Regex {
 		fileprivate init(checkingResult: NSTextCheckingResult, string: String) {
 			self.checkingResult = checkingResult
 			self.originalString = string
-			self.range = string.range(fromNSRange: checkingResult.range)
+			self.range = string.rangeBetter(from: checkingResult.range)
 			self.value = String(string[self.range])
 
 			// The first range is the full range, so we ignore that.
@@ -214,7 +214,7 @@ extension Regex {
 				let range = checkingResult.range(at: $0)
 
 				guard
-					range.location != NSNotFound,
+					!range.isNotFound,
 					range.length > 0
 				else {
 					return nil

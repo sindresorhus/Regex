@@ -1,13 +1,8 @@
 import Foundation
 
 
-extension StringProtocol {
-	var string: String { String(self) }
-}
-
-
 extension StaticString {
-	var string: String { "\(self)" }
+	var toString: String { "\(self)" }
 }
 
 
@@ -25,13 +20,18 @@ extension String {
 }
 
 
+extension NSRange {
+	var isNotFound: Bool { location == NSNotFound }
+}
+
+
 extension String {
 	/**
 	Get a string range from a `NSRange`.
 
 	This works better than the built-in `Range(nsRange, in: string)`, which doesn't correctly handle some Unicode compositions.
 	*/
-	func range(fromNSRange nsRange: NSRange) -> Range<Index> {
+	func rangeBetter(from nsRange: NSRange) -> Range<Index> {
 		let startIndex = utf16.index(utf16.startIndex, offsetBy: nsRange.lowerBound)
 		let endIndex = utf16.index(startIndex, offsetBy: nsRange.length)
 		return rangeOfComposedCharacterSequences(for: startIndex..<endIndex)
@@ -39,9 +39,13 @@ extension String {
 }
 
 
-/// Convenience wrappers that make the `range` parameter optional and type-safe.
+/**
+Convenience wrappers that make the `range` parameter optional and type-safe.
+*/
 extension NSRegularExpression {
-	/// Returns an array containing all the matches of the regular expression in the string.
+	/**
+	Returns an array containing all the matches of the regular expression in the string.
+	*/
 	func matches(
 		in string: String,
 		options: MatchingOptions = [],
@@ -54,7 +58,9 @@ extension NSRegularExpression {
 		)
 	}
 
-	/// Returns the first match of the regular expression within the given range of the string.
+	/**
+	Returns the first match of the regular expression within the given range of the string.
+	*/
 	func firstMatch(
 		in string: String,
 		options: MatchingOptions = [],

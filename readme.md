@@ -120,4 +120,4 @@ Those are [raw strings](https://www.hackingwithswift.com/articles/162/how-to-use
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
 - [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - Add user-customizable global keyboard shortcuts to your macOS app
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Add “Launch at Login” functionality to your macOS app
-- [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
+- [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift+archived%3Afalse&type=repositories)

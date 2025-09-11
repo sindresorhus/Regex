@@ -202,4 +202,20 @@ final class RegexTests: XCTestCase {
 			match.value
 		)
 	}
+
+	func testCodable() throws {
+		let regex = Regex(#"\d+"#, options: [.caseInsensitive, .anchorsMatchLines])
+		let encoder = JSONEncoder()
+		let decoder = JSONDecoder()
+
+		let data = try encoder.encode(regex)
+		let decodedRegex = try decoder.decode(Regex.self, from: data)
+
+		XCTAssertEqual(regex.pattern, decodedRegex.pattern)
+		XCTAssertEqual(regex.options, decodedRegex.options)
+		XCTAssertEqual(regex, decodedRegex)
+
+		XCTAssertTrue(decodedRegex.isMatched(by: "123"))
+		XCTAssertFalse(decodedRegex.isMatched(by: "abc"))
+	}
 }

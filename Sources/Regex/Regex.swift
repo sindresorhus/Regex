@@ -12,7 +12,7 @@ regex.isMatched(by: "Unicorn")
 //=> true
 ```
 */
-public struct Regex: Hashable {
+public struct Regex: Hashable, Codable, Sendable {
 	let nsRegex: NSRegularExpression
 
 	// MARK: Initializers
@@ -274,5 +274,28 @@ extension Regex {
 	*/
 	public static func escapingPattern(for string: String) -> String {
 		NSRegularExpression.escapedPattern(for: string)
+	}
+}
+
+// MARK: Codable
+
+extension Regex {
+	enum CodingKeys: String, CodingKey {
+		case pattern
+		case options
+	}
+
+	public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		let pattern = try container.decode(String.self, forKey: .pattern)
+		let optionsRawValue = try container.decode(UInt.self, forKey: .options)
+		let options = Options(rawValue: optionsRawValue)
+		try self.init(pattern, options: options)
+	}
+
+	public func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(pattern, forKey: .pattern)
+		try container.encode(options.rawValue, forKey: .options)
 	}
 }

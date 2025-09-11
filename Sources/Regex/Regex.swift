@@ -113,10 +113,27 @@ extension Regex {
 	}
 }
 
-// TODO: This needs to include the options too.
-//extension Regex: CustomStringConvertible {
-//	public var description: String { regex.pattern }
-//}
+// MARK: CustomStringConvertible
+
+extension Regex: CustomStringConvertible {
+	public var description: String {
+		let optionDescriptions: [(Options, String)] = [
+			(.caseInsensitive, "caseInsensitive"),
+			(.allowCommentsAndWhitespace, "allowCommentsAndWhitespace"),
+			(.ignoreMetacharacters, "ignoreMetacharacters"),
+			(.dotMatchesLineSeparators, "dotMatchesLineSeparators"),
+			(.anchorsMatchLines, "anchorsMatchLines"),
+			(.useUnixLineSeparators, "useUnixLineSeparators"),
+			(.useUnicodeWordBoundaries, "useUnicodeWordBoundaries")
+		]
+		
+		let flags = optionDescriptions
+			.filter { options.contains($0.0) }
+			.map(\.1)
+		
+		return flags.isEmpty ? "/\(pattern)/" : "/\(pattern)/[\(flags.joined(separator: ", "))]"
+	}
+}
 
 extension Regex {
 	// MARK: Properties
@@ -223,6 +240,27 @@ extension Regex {
 				return Group(originalString: string, range: range)
 			}
 		}
+	}
+}
+
+// MARK: CustomStringConvertible for Match and Group
+
+extension Regex.Match: CustomStringConvertible {
+	public var description: String {
+		let base = "\"\(value)\" at \(range.lowerBound)"
+		
+		guard !groups.isEmpty else {
+			return base
+		}
+		
+		let groupsDescription = groups.map { "\"\($0.value)\"" }.joined(separator: ", ")
+		return "\(base) with groups: [\(groupsDescription)]"
+	}
+}
+
+extension Regex.Match.Group: CustomStringConvertible {
+	public var description: String {
+		"\"\(value)\""
 	}
 }
 
